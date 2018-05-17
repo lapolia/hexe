@@ -64,9 +64,49 @@ namespace WpfApp1
 
             var ex3 = Assert.Throws<ArgumentException>(() => gen.plantMines(2));
             Assert.That(ex3.Message, Is.EqualTo("МАЛО МИН"));
+        }
 
-            
+        [TestCase]
+        public void reveal()
+        {
+            CGenerator gen = new CGenerator();
+
+            gen.field = new int[,] {
+                {  3, -1,  2,  0,  0 },
+                { -1, -1,  2,  0,  0 },
+                {  2,  2,  2,  1,  1 },
+                {  0,  0,  1, -1,  1 } };
+
+            gen.reveal(3, 1);
+            gen.reveal(0, 3);
+            Assert.AreEqual(10, gen.field[3, 1]);
+            Assert.AreEqual(10, gen.field[0, 3]);
+            Assert.AreEqual(10, gen.field[3, 0]);
+            Assert.AreEqual(2, gen.field[1, 2]);
+        }
+
+
+        [TestCase]
+        public void calculate()
+        {
+            CGenerator gen = new CGenerator();
+
+            gen.field = new int[,] 
+            {
+                {  0,  0,  0, -1,  0 },
+                {  0, -1,  0, -1,  0 },
+                {  0, -1, -1,  0,  0 },
+                {  0, -1,  0, -1,  0 }
+            };
+            gen.calculate();
+            Assert.AreEqual(1, gen.field[0, 0]);
+            Assert.AreEqual(4, gen.field[3, 2]);
+            Assert.AreEqual(5, gen.field[1, 2]);
+            Assert.AreEqual(1, gen.field[3, 4]);
+            Assert.AreEqual(3, gen.field[2, 3]);
 
         }
+
     }
+
 }

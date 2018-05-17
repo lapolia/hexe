@@ -48,6 +48,8 @@ namespace WpfApp1
 
         public void init (int n)
         {
+            //не больше
+            //не меньше
             field = new int[n, n];
         }
 
@@ -124,6 +126,8 @@ namespace WpfApp1
 
         public int getCell(int i, int j)
         {
+            //не больше
+            //не меньше
             return field[i, j];
         }
 

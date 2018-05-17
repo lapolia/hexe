@@ -23,7 +23,7 @@ namespace WpfApp1
         BitmapImage mine;
         CGenerator gen = new CGenerator();
         int h = 0;
-        int q = 7;
+        int q = 5;
 
         public MainWindow()
         {
@@ -104,6 +104,7 @@ namespace WpfApp1
                         //запись в нажатую кнопку её номера
                         (buts[i]).Content = 0;
                         h++;
+                        (buts[i]).Click -= Btn_Click;
                     }
                 }
             } else
@@ -120,7 +121,8 @@ namespace WpfApp1
                 ((Button)sender).Content = gen.getCell(n % 5, n / 5);
 
                 h++;
-                if ((25 - h) == q) { MessageBox.Show("WIN!!!1!!!!111!"); }
+                ((Button)sender).Click -= Btn_Click;
+                if ((25 - h) == q) { MessageBox.Show("Du bist WINNER!"); }
 
             } else
 
@@ -153,7 +155,7 @@ namespace WpfApp1
                     }
                     
                 }
-                MessageBox.Show("haHAA!");
+                MessageBox.Show("you are R E D I S K A ");
                 setka.IsEnabled = false;
 
 
